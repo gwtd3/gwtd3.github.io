@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="gwt-d3 : the GWT wrapper around d3.js" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>gwt-d3</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/gwtd3">View on GitHub</a>
+
+          <h1 id="project_title">gwt-d3</h1>
+          <h2 id="project_tagline">the GWT wrapper around d3.js</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>This library provides access to the <a href="http://d3js.org/">d3.js API</a> to the Java and GWT community.
+It allows GWT developers to use d3.js library in their project.</p>
+
+<p>Goals of the library:</p>
+
+<ul>
+<li>provide access to relevant API of <a href="http://d3js.org/">d3.js API</a>
+</li>
+<li>enrich the API to ease Java programming style of d3 (turns JS array into List, string constants to Enum, ...)</li>
+<li>make a bridge between GWT Widget API and d3 </li>
+</ul><p>Have a look at the 
+<a href="http://gwt-d3.appspot.com/">demo</a>.</p>
+
+<p><img src="http://gwtd3.github.io/images/gwtd3-demo-screenshot2.jpg" width="355px">
+ 
+<img src="http://gwtd3.github.io/images/gwtd3-demo-screenshot1.jpg" width="355px"></p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p><strong>1. Configure a project</strong></p>
+
+<p><strong>Using Maven</strong></p>
+
+<p>add the gwt-d3-api module to your pom.xml:</p>
+
+<div class="highlight highlight-xml"><pre><span class="nt">&lt;dependencies&gt;</span>
+ ...
+ <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.github.gwtd3<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>gwt-d3-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+ <span class="nt">&lt;/dependency&gt;</span>
+ ...
+</pre></div>
+
+<p>Note: these JARs don't contain any server-side code, so you don't need to package them into your webapp.</p>
+
+<p><strong>Without Maven</strong></p>
+
+<p>Download <a href="http://central.maven.org/maven2/com/github/gwtd3/gwt-d3-js/3.3.10/gwt-d3-js-3.3.10.jar">gwt-d3-js-3.3.10.jar</a>,
+<a href="http://central.maven.org/maven2/com/github/gwtd3/gwt-d3-api/1.0.1/gwt-d3-api-1.0.1.jar">gwt-d3-api-1.0.1.jar</a>.
+Add the JARs to the project classpath.</p>
+
+<p>Note: these JARs don't contain any server-side code, so you don't need to package them into your webapp.</p>
+
+<p><strong>2. Add the gwt D3 module inheritance in your gwt module file (.gwt.xml):</strong></p>
+
+<div class="highlight highlight-xml"><pre>  <span class="nt">&lt;inherits</span> <span class="na">name=</span><span class="s">'com.github.gwtd3.D3'</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<p><strong>3. Check everything works fine :</strong></p>
+
+<div class="highlight highlight-java"><pre><span class="kd">final</span> <span class="n">Label</span> <span class="n">versionLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">"d3.js current version: "</span> <span class="o">+</span> <span class="n">D3</span><span class="o">.</span><span class="na">version</span><span class="o">());</span>
+    <span class="n">RootPanel</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">versionLabel</span><span class="o">);</span>
+</pre></div>
+
+<p>Launch your application; the current version of d3.js should be displayed.</p>
+
+<h2>
+<a name="learn-d3" class="anchor" href="#learn-d3"><span class="octicon octicon-link"></span></a>Learn D3</h2>
+
+<ul>
+<li>The best way to learn D3 is to read the <a href="https://github.com/mbostock/d3/wiki/Tutorials">d3.js tutorials</a><a></a> </li>
+<li>Then you may want to check the examples gallery from <a href="https://github.com/mbostock/d3/wiki/Gallery">Mike Bostock website</a>
+</li>
+<li>You may also be interested in forking the gwt-d3 repository to see the demo source code</li>
+<li>Read the <a href="http://gwtd3.github.io/gwt-d3/apidocs/1.0.1">Javadocs</a>
+</li>
+<li>Look at the <a href="http://gwt-d3.appspot.com/">demo</a>.</li>
+</ul><h2>
+<a name="api-docs" class="anchor" href="#api-docs"><span class="octicon octicon-link"></span></a>API docs</h2>
+
+<ul>
+<li><a href="gwt-d3/apidocs/1.0.1/">1.0.1</a></li>
+<li><a href="gwt-d3/apidocs/1.0.0/">1.0.0</a></li>
+</ul><h2>
+<a name="release-notes" class="anchor" href="#release-notes"><span class="octicon octicon-link"></span></a>Release notes</h2>
+
+<ul>
+<li>1.0.1 (7th of dec 2013) : a bug fix release to make gwt-d3 compatible with GWT super dev mode.</li>
+<li>1.0.0 (30th of sept 2013) : initial release (see below for the API coverage)</li>
+</ul><h2>
+<a name="scope-and-coverage" class="anchor" href="#scope-and-coverage"><span class="octicon octicon-link"></span></a>Scope and coverage</h2>
+
+<p>Currently (7th of dec 2013), version 1.0.1 of gwt-d3 depends on the version 3.3.10 of d3.js codebase.
+However, not all the API is covered. Please also have a look to the <a href="https://github.com/gwtd3/gwt-d3/issues?milestone=&amp;page=1&amp;state=open">issues</a>.</p>
+
+<h5>
+<a name="core" class="anchor" href="#core"><span class="octicon octicon-link"></span></a>CORE</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Selections</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Transitions</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Working with Arrays</td>
+<td align="right">Partial</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Math</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">String Formatting</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Colors</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Loading External Resources</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>unplanned</td>
+</tr>
+<tr>
+<td align="right">CSV Formatting</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>unplanned</td>
+</tr>
+<tr>
+<td align="right">Namespaces</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>unplanned</td>
+</tr>
+<tr>
+<td align="right">Internals</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>unplanned</td>
+</tr>
+</tbody>
+</table><h5>
+<a name="scales" class="anchor" href="#scales"><span class="octicon octicon-link"></span></a>SCALES</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Linear</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">sqrt</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">pow</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">log</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">quantize</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">threshold</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">quantile</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">identity</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Ordinal</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+</tbody>
+</table><h5>
+<a name="svg" class="anchor" href="#svg"><span class="octicon octicon-link"></span></a>SVG</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right"><strong>Shapes</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Line</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">line.radial</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">area</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">area.radial</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">arc</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">chord</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">diagonal</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">diagonal.radial</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+<tr>
+<td align="right">Symbol</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><strong>Axes</strong></td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right"><strong>Controls</strong></td>
+<td align="right">Partial</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+</tbody>
+</table><h5>
+<a name="layouts" class="anchor" href="#layouts"><span class="octicon octicon-link"></span></a>LAYOUTS</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Bundle</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Chord</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Cluster</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Force</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Hierarchy</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Histogram</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Pack</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Partition</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Pie</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Stack</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Tree</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+<tr>
+<td align="right">Treemap</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.2.0</td>
+</tr>
+</tbody>
+</table><h5>
+<a name="time" class="anchor" href="#time"><span class="octicon octicon-link"></span></a>TIME</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Time Formatting</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Time Scales</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Time Intervals</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+</tbody>
+</table><h5>
+<a name="geography" class="anchor" href="#geography"><span class="octicon octicon-link"></span></a>GEOGRAPHY</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Paths</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.3.0</td>
+</tr>
+<tr>
+<td align="right">Projections</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.3.0</td>
+</tr>
+<tr>
+<td align="right">Streams</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.3.0</td>
+</tr>
+</tbody>
+</table><h5>
+<a name="geometry" class="anchor" href="#geometry"><span class="octicon octicon-link"></span></a>GEOMETRY</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Quadtree</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Polygon</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Hull</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Voronoi</td>
+<td align="right">-</td>
+<td align="right">-</td>
+<td>planned for 1.1.0</td>
+</tr>
+</tbody>
+</table><h5>
+<a name="behaviors" class="anchor" href="#behaviors"><span class="octicon octicon-link"></span></a>BEHAVIORS</h5>
+
+<table>
+<thead><tr>
+<th align="right">API</th>
+<th align="right">status</th>
+<th align="right">version</th>
+<th>notes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right">Drag</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+<tr>
+<td align="right">Zoom</td>
+<td align="right">Complete</td>
+<td align="right">1.0.0</td>
+<td></td>
+</tr>
+</tbody>
+</table><h2>
+<a name="version-mapping" class="anchor" href="#version-mapping"><span class="octicon octicon-link"></span></a>Version mapping</h2>
+
+<table>
+<thead><tr>
+<th align="right">GWT-D3 version</th>
+<th align="right">d3.js version</th>
+<th align="right">GWT-D3 release date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="right"><a href="http://central.maven.org/maven2/com/github/gwtd3/gwt-d3-api/1.0.1/">1.0.1</a></td>
+<td align="right">3.3.10</td>
+<td align="right">2013 12 07</td>
+</tr>
+<tr>
+<td align="right"><a href="http://central.maven.org/maven2/com/github/gwtd3/gwt-d3-api/1.0.0/">1.0.0</a></td>
+<td align="right">3.3.6</td>
+<td align="right">2013 09 30</td>
+</tr>
+<tr>
+<td align="right"><a href="http://repository-gwt-d3.forge.cloudbees.com/release/com/github/gwtd3/gwt-d3-api/0.0.16/">0.0.16</a></td>
+<td align="right">3.3.6</td>
+<td align="right">2013 09 29</td>
+</tr>
+<tr>
+<td align="right">0.0.15</td>
+<td align="right">3.1.10</td>
+<td align="right">2013 07 29</td>
+</tr>
+<tr>
+<td align="right">0.0.14</td>
+<td align="right">3.1.10</td>
+<td align="right">2013 07 24</td>
+</tr>
+<tr>
+<td align="right">0.0.13</td>
+<td align="right">3.1.10</td>
+<td align="right">2013 06 13</td>
+</tr>
+<tr>
+<td align="right">0.0.12</td>
+<td align="right">3.1.10</td>
+<td align="right">2013 06 01</td>
+</tr>
+</tbody>
+</table><h2>
+<a name="debugging-d3js" class="anchor" href="#debugging-d3js"><span class="octicon octicon-link"></span></a>Debugging d3.js</h2>
+
+<p>You may be interested in debugging d3.js scripts when using super dev mode. 
+If so, just add to your gwt application module file the following configuration:</p>
+
+<div class="highlight highlight-xml"><pre>  <span class="nt">&lt;set-property</span> <span class="na">name=</span><span class="s">"d3.pretty"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+</pre></div>
+
+<p>Continuous integration on <a href="https://gwt-d3.ci.cloudbees.com/job/CI%20of%20gwt-d3/">Cloudbees</a>:
+<a href="https://gwt-d3.ci.cloudbees.com/job/CI%20of%20gwt-d3/"><img src="https://gwt-d3.ci.cloudbees.com/buildStatus/icon?job=CI%20of%20gwt-d3"></a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
